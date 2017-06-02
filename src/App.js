@@ -21,7 +21,7 @@ class CounterCalc extends Component {
         super();
         this.state = {
             sum: 0,
-            inputVal:0
+            inputVal:1
         };
     }
 
