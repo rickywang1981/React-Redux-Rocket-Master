@@ -49,7 +49,7 @@ class CounterCalc extends Component {
         this.sub(toSub);
         // log the sub action
         const logItem = {'funcName': CounterCalc.subFuncName, 'func': this.add, 'param': toSub};
-        this.state.actionLogItems.push(new LogItem(CounterCalc.subFuncName, this.sub, toSub));
+        this.state.actionLogItems.push(new LogItem(CounterCalc.subFuncName, this.add, toSub));
     }
 
     add = (val) => {
