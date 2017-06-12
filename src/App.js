@@ -21,7 +21,7 @@ class CounterCalc extends Component {
         this.state = {
             sum: 0,
             inputVal:1,
-            actionLogItems:[] // store add, sub actionLogItems as arrays of [functionName, function, parameter]. E.g., [['add', add(), 5], ['sub',sub(), 3]...]
+            actionLogItems:[] // store add, sub actionLogItems as arrays of [functionName, function, parameter]. E.g., [['add', sub(), 5], ['sub',add(), 3]...]
         };
     }
 
