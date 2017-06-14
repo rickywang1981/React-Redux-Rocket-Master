@@ -75,7 +75,9 @@ class CounterCalc extends Component {
         funcInstance(param);
 
         // remove the log item in this.state.actionLogItems
-        logItems.splice(index, 1);
+        const copyLogItems = [...logItems];
+        copyLogItems.splice(index, 1);
+        this.setState({actionLogItems: copyLogItems});
     }
 
     render() {
