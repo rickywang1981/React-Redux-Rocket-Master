@@ -30,11 +30,10 @@ class CounterCalc extends Component {
     }
 
     addClick = () => {
-        const {inputVal} = this.state;
+        const {inputVal, actionLogItems: logItems} = this.state;
         const toAdd = Number(inputVal);
-        this.add(toAdd);
-        // log the add action, the 2nd param is the reversed function (add -> sub). 
-        this.state.actionLogItems.push(new LogItem(CounterCalc.addFuncName, this.sub, toAdd));
+        this.add(toAdd);                
+        this.logAction(CounterCalc.addFuncName, this.sub, toAdd);
     }
 
     add = (val) => {
@@ -44,12 +43,10 @@ class CounterCalc extends Component {
     static addFuncName = "Add"
 
     subClick = () => {
-        const {inputVal} = this.state;
+        const {inputVal, actionLogItems: logItems} = this.state;
         const toSub = Number(inputVal);
         this.sub(toSub);
-        // log the sub action
-        const logItem = {'funcName': CounterCalc.subFuncName, 'func': this.add, 'param': toSub};
-        this.state.actionLogItems.push(new LogItem(CounterCalc.subFuncName, this.add, toSub));
+        this.logAction(CounterCalc.subFuncName, this.add, toSub);
     }
 
     add = (val) => {
@@ -61,6 +58,15 @@ class CounterCalc extends Component {
     }
 
     static subFuncName = "Substract"
+
+    logAction = (funcName, funcInstance, param) => {
+        const {actionLogItems: logItems} = this.state;
+
+        const copyLogItems = [...logItems];
+
+        copyLogItems.push(new LogItem(funcName, funcInstance, param));
+        this.setState({actionLogItems: copyLogItems});
+    }
 
     revertAction = (index) => (e) => {
         const {actionLogItems: logItems} = this.state;
